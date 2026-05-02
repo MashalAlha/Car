@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-premium-900 text-white min-h-screen font-sans;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply bg-premium-800/60 backdrop-blur-md border border-white/10 shadow-xl;
+  }
+  
+  .luxury-gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-gold-400 to-gold-600;
+  }
+
+  .luxury-button {
+    @apply relative overflow-hidden transition-all duration-300 transform rounded-lg bg-gold-500 text-premium-900 font-semibold hover:bg-gold-400 hover:-translate-y-0.5 hover:shadow-[0_4px_20px_rgba(212,175,55,0.4)] active:translate-y-0 active:shadow-none;
+  }
+  
+  .luxury-button::after {
+    content: '';
+    @apply absolute top-0 -left-full w-full h-full bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-[-25deg] transition-all duration-700;
+  }
+
+  .luxury-button:hover::after {
+    @apply left-[150%];
+  }
+  
+  .luxury-input {
+    @apply w-full bg-premium-input border border-premium-border rounded-lg px-4 py-3 text-white transition-all duration-300 focus:outline-none focus:border-gold-500 focus:ring-1 focus:ring-gold-500/50 placeholder:text-gray-500;
+  }
+}

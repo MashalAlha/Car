@@ -1,0 +1,280 @@
+erDiagram
+    users_user {
+        int id PK
+        varchar username
+        varchar email
+        varchar role
+        varchar phone
+        bool is_verified
+        bool is_superuser
+        bool is_staff
+        datetime date_joined
+    }
+
+    cars_car {
+        int id PK
+        varchar make
+        varchar model
+        int year
+        varchar body_type
+        varchar category_tier
+        bool is_for_sale
+        decimal price
+        bool is_for_rent
+        decimal daily_rent_price
+        datetime created_at
+    }
+
+    cars_carimage {
+        int id PK
+        int car_id FK
+        varchar image
+        bool is_primary
+        datetime created_at
+    }
+
+    cars_purchase {
+        int id PK
+        int car_id FK
+        int user_id FK
+        int approved_by_id FK
+        decimal price_paid
+        varchar status
+        varchar payment_method
+        bool payment_status
+        datetime purchase_date
+        date delivery_date
+    }
+
+    cars_rental {
+        int id PK
+        int car_id FK
+        int user_id FK
+        date start_date
+        date end_date
+        decimal total_price
+        varchar status
+        varchar payment_method
+        bool payment_status
+        bool engine_status
+    }
+
+    users_trustrequest {
+        int id PK
+        int user_id FK
+        varchar license_number
+        date expiry_date
+        varchar status
+        datetime created_at
+    }
+
+    interactions_review {
+        int id PK
+        int user_id FK
+        int content_type_id FK
+        int object_id
+        int rating
+        text comment
+        datetime created_at
+    }
+
+    interactions_favorite {
+        int id PK
+        int user_id FK
+        int content_type_id FK
+        int object_id
+        datetime created_at
+    }
+
+    interactions_conciergemessage {
+        int id PK
+        int user_id FK
+        varchar subject
+        text message
+        text admin_reply
+        varchar status
+        datetime created_at
+    }
+
+    store_partcategory {
+        int id PK
+        varchar name
+        text description
+    }
+
+    store_part {
+        int id PK
+        int category_id FK
+        varchar name
+        varchar sku
+        decimal price
+        int stock_quantity
+        varchar brand
+        varchar car_make
+        varchar car_model
+        bool is_accessory
+        bool installation_available
+    }
+
+    store_carmodellookup {
+        int id PK
+        varchar make
+        varchar model
+        int year_start
+        int year_end
+    }
+
+    store_part_compatible_cars {
+        int id PK
+        int part_id FK
+        int carmodellookup_id FK
+    }
+
+    store_storeorder {
+        int id PK
+        int user_id FK
+        int workshop_appointment_id FK
+        decimal total_price
+        varchar status
+        bool requires_installation
+        decimal workshop_fee
+        datetime created_at
+    }
+
+    store_orderitem {
+        int id PK
+        int order_id FK
+        int part_id FK
+        int quantity
+        decimal price_at_time
+    }
+
+    workshop_workshop {
+        int id PK
+        int manager_id FK
+        varchar name
+        varchar category
+        varchar service_location_type
+        varchar working_days
+        varchar working_hours
+        decimal mobile_fee
+        decimal on_site_fee
+    }
+
+    workshop_servicetype {
+        int id PK
+        varchar name
+        varchar workshop_category
+        decimal base_price
+        decimal estimated_duration_hours
+    }
+
+    workshop_worker {
+        int id PK
+        int workshop_id FK
+        varchar name
+        varchar specialty
+        varchar phone
+        bool is_active
+    }
+
+    workshop_appointment {
+        int id PK
+        int customer_id FK
+        int workshop_id FK
+        int service_id FK
+        date scheduled_date
+        time scheduled_time
+        bool is_home_service
+        varchar status
+        varchar payment_status
+        decimal total_amount
+    }
+
+    workshop_workorder {
+        int id PK
+        int appointment_id FK
+        int assigned_technician_id FK
+        int workshop_id FK
+        varchar status
+        text manager_notes
+        text technician_notes
+        decimal additional_parts_cost
+        decimal unforeseen_costs
+    }
+
+    workshop_workorderpart {
+        int id PK
+        int work_order_id FK
+        int part_id FK
+        int quantity
+        decimal price_at_time
+    }
+
+    operations_notification {
+        int id PK
+        int user_id FK
+        varchar title
+        text message
+        varchar type
+        bool is_read
+        datetime created_at
+    }
+
+    operations_supportticket {
+        int id PK
+        int user_id FK
+        varchar subject
+        text description
+        varchar status
+        text admin_reply
+    }
+
+    operations_adbanner {
+        int id PK
+        varchar title
+        varchar image_url
+        varchar hyperlink
+        bool is_active
+    }
+
+    %% Users → Cars
+    users_user ||--o{ cars_purchase : "buys"
+    users_user ||--o{ cars_purchase : "approves"
+    users_user ||--o{ cars_rental : "rents"
+    cars_car ||--o{ cars_carimage : "has images"
+    cars_car ||--o{ cars_purchase : "purchased via"
+    cars_car ||--o{ cars_rental : "rented via"
+
+    %% Users → Trust
+    users_user ||--o{ users_trustrequest : "submits"
+
+    %% Users → Interactions
+    users_user ||--o{ interactions_review : "writes"
+    users_user ||--o{ interactions_favorite : "favorites"
+    users_user ||--o{ interactions_conciergemessage : "sends"
+
+    %% Store
+    store_partcategory ||--o{ store_part : "categorizes"
+    store_part ||--o{ store_part_compatible_cars : "compatible with"
+    store_carmodellookup ||--o{ store_part_compatible_cars : "matched by"
+    users_user ||--o{ store_storeorder : "places"
+    store_storeorder ||--o{ store_orderitem : "contains"
+    store_part ||--o{ store_orderitem : "included in"
+    store_part ||--o{ workshop_workorderpart : "used in"
+
+    %% Workshop
+    users_user ||--o{ workshop_workshop : "manages"
+    workshop_workshop ||--o{ workshop_worker : "employs"
+    workshop_workshop ||--o{ workshop_appointment : "hosts"
+    workshop_servicetype ||--o{ workshop_appointment : "defines"
+    users_user ||--o{ workshop_appointment : "books"
+    workshop_appointment ||--o| workshop_workorder : "generates"
+    workshop_appointment ||--o| store_storeorder : "linked to"
+    workshop_worker ||--o{ workshop_workorder : "assigned to"
+    workshop_workshop ||--o{ workshop_workorder : "handled by"
+    workshop_workorder ||--o{ workshop_workorderpart : "uses"
+
+    %% Operations
+    users_user ||--o{ operations_notification : "receives"
+    users_user ||--o{ operations_supportticket : "raises"

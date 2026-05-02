@@ -1,0 +1,130 @@
+Exotic Motors - Granular Features & Requirements Audit
+
+============= AUTHENTICATION & ACCESS PROTOCOLS =============
+1.  Client Registration: Create a new user identity in the system.
+2.  Client Login: Authenticate using email and password credentials.
+3.  Admin Login: Access the executive portal via a secure administrative gateway.
+4.  Logout: Securely terminate the current session and clear tokens.
+5.  Role-Based Access Control (RBAC): Restricted access to admin modules based on user roles (Admin, WorkshopManager).
+6.  Session Integrity: Maintain persistent authentication across page reloads.
+
+============= PUBLIC SHOWROOM & BROWSING =============
+7.  View Home Page: Access the main landing area with luxury hero sections and platform stats.
+8.  Browse Car Catalog: View the full list of available luxury vehicles.
+9.  Search Catalog: Filter vehicles by keyword, make, or model.
+10. View Vehicle Details: Access deep specifications, high-res images, and pricing for a specific car.
+11. View Store Catalog: Browse the boutique collection of high-performance parts and accessories.
+12. View Part Details: View descriptions, compatibility, SKU, and stock levels for parts.
+13. Workshop Status Inquiry: Track service progress using a unique ID without authentication.
+14. View Support Center: Access contact protocols and office locations.
+15. Seamless Localization: Toggle the entire platform interface between English and Arabic.
+
+============= CLIENT DASHBOARD & GARAGE =============
+16. View Client Profile: Display user identity, system ID, and verification status.
+17. Edit Profile Data: Update personal contact information and credentials.
+18. ID Verification Submission: Upload driver's license or identity documents for VIP clearance.
+19. Manage Favorites: Add luxury vehicles to a personal "Digital Garage" for quick access.
+20. Remove Favorites: Dismiss items from the garage list.
+21. View "My Purchases": Monitor acquisition status, pending approvals, and delivery windows.
+22. Access Purchase Contract: View and print the secure PDF agreement for acquired vehicles.
+23. View "My Rentals": Access historical and active vehicle reservation records.
+24. View "My Appointments": Track scheduled workshop or home service sessions.
+25. View "My Store Orders": Review purchases of performance parts and boutique accessories.
+26. Access Financial History: View a ledger of all transactions made on the platform.
+27. Concierge Messaging: Send secure messages to the administrative concierge team.
+28. View Concierge Responses: Read replies and track communication status with staff.
+
+============= TRANSACTIONAL ENGINE (CLIENT-SIDE) =============
+29. Initiate Vehicle Acquisition: Submit a formal request to purchase a vehicle from stock.
+30. Request VIP Rental: Initialize a rental reservation for a specific vehicle and duration.
+31. Book Workshop Service: Schedule bespoke maintenance or tuning sessions.
+32. Select Service Location: Define whether a service occurs at HQ or as a VIP Home Service.
+33. Add Store Item to Cart: Collate parts and accessories for purchase.
+34. Remove Store Item from Cart: Adjust selection before finalizing.
+35. Finalize Store Purchase: Execute the payment protocol for selected boutique items.
+
+============= EXECUTIVE DASHBOARD & TELEMETRY (ADMIN) =============
+36. View Real-Time Revenue: Aggregate income from Purchases, Rentals, Store, and Workshop.
+37. Monitor Active Users: View the current count of registered system identities.
+38. Track Inventory Velocity: Monitor the total number of vehicles sold.
+39. Platform Uptime Monitoring: View the operational status of the system.
+40. Activity Stream: View a live synchronization of all global platform events.
+41. Manual Telemetry Refresh: Force a re-synchronization of dashboard metrics.
+42. Revenue Growth Tracking: View YTD growth trajectories for business performance.
+
+============= VEHICLE INVENTORY MANAGEMENT (ADMIN) =============
+43. Add New Vehicle: Register a new vehicle with technical specs and pricing.
+44. Upload Vehicle Images: Attach visual media to a vehicle profile.
+45. Edit Vehicle Metadata: Update make, model, year, and description.
+46. Update Acquisition Pricing: Modify the sale price for a vehicle.
+47. Update Rental Pricing: Modify the daily rental rate for a vehicle.
+48. Delete Vehicle: Remove a vehicle from the global catalog and stock.
+49. Toggle Vehicle Availability: Switch vehicle status between Sale, Rental, or Maintenance.
+50. Manage Vehicle Images: Replace or remove specific images from a vehicle's gallery.
+
+============= RENTAL DISPATCH & CONTROL (ADMIN) =============
+51. View Rental Requests: Access the directory of incoming reservation inquiries.
+52. Review Rental Details: Inspect user credentials and requested duration.
+53. Approve Rental: Grant authorization for a vehicle reservation.
+54. Reject Rental: Deny a rental request with an official administrative reason.
+55. Mark Rental as Completed: Finalize a trip and return the vehicle to active stock.
+56. Live Telemetry Tracking: Track the GPS coordinates of an active rental vehicle.
+57. Monitor Engine Health: View the real-time engine status of a rented vehicle.
+58. Remote Engine Cutoff: Disable a vehicle's engine via remote security protocol.
+59. Restore Engine Function: Re-enable engine operation for an active rental.
+
+============= PURCHASE & ACQUISITION MANAGEMENT (ADMIN) =============
+60. View Purchase Requests: Monitor incoming vehicle acquisition inquiries.
+61. Inspect Buyer Identity: Review user profile and verification status during purchase.
+62. Approve Acquisition: Validate a purchase and move it to the contract stage.
+63. Reject Acquisition: Deny a purchase request and return the car to available stock.
+64. Cancel Finalized Purchase: Revoke an approved acquisition if protocol fails.
+65. Schedule Delivery Date: Define the precise day for vehicle handover.
+66. Schedule Delivery Time: Define the precise time window for vehicle handover.
+67. Edit Purchase Contract: Add bespoke notes and terms to the digital acquisition agreement.
+68. Preview Digital Contract: Inspect the finalized agreement before delivery.
+
+============= CLIENT RELATIONS & IDENTITY (ADMIN) =============
+69. View User Directory: Access the full list of registered platform members.
+70. Create User Manually: Register a new account from the executive portal.
+71. Edit User Data: Update a user's contact information and credentials.
+72. Delete User Account: Permanently remove a user identity from the system.
+73. Role Promotion/Demotion: Manually change a user's role (Client, Manager, Admin).
+74. Review Identity Documents: Inspect uploaded driver's licenses for trust verification.
+75. Approve Verification: Grant VIP status to a user based on submitted documents.
+76. Reject Verification: Deny VIP clearance and provide feedback to the user.
+
+============= WORKSHOP & TECHNICAL OPERATIONS (ADMIN) =============
+77. View Service Appointments: Monitor the queue of workshop and home service tasks.
+78. Assign Technicians: Link a specific worker to a workshop or home service order.
+79. Update Service Status: Move orders through lifecycle (Unassigned, In Progress, Completed).
+80. Record Manager Notes: Add internal instructions to a service order.
+81. Record Technician Notes: Capture field notes during vehicle maintenance.
+82. Calculate Parts Cost: Track the value of parts used during a service session.
+83. Track Unforeseen Costs: Log additional expenses incurred during technical work.
+
+============= STORE & BOUTIQUE MANAGEMENT (ADMIN) =============
+84. Index Store Item: Add a new part or accessory to the store catalog.
+85. Edit Item Metadata: Update name, brand, and descriptions for store items.
+86. Update Store Pricing: Modify the retail price of boutique items.
+87. Update Stock Levels: Manually adjust the available quantity of parts.
+88. Delete Store Item: Remove a product from the boutique ledger.
+89. Toggle Installation Support: Mark if a part requires professional workshop installation.
+90. Categorize Boutique Items: Manage the fitment and category filters for the store.
+
+============= ADMINISTRATIVE SETTINGS & PROTOCOLS =============
+91. Update Site Metadata: Modify the global Site Name and Contact Email.
+92. Manage Site Mode: Toggle between Maintenance, Live, or Stealth modes.
+93. Custom Favicon Management: Upload and update the system favicon.
+94. Theme Configuration: Toggle between Light, Dark, or Luxury-themed UI.
+95. Custom Styling: Inject custom CSS overrides into the platform.
+96. View Security Logs: Inspect the history of administrative login attempts.
+97. Monitor Access IPs: Track the IP addresses of executive logins.
+98. Manage Localization Keys: Edit and update translation dictionaries for en/ar.
+99. System Performance Stats: View server-level telemetry and load metrics.
+
+============= SYSTEM UX & ERROR HANDLING =============
+100. Global 404 Experience: Provide a branded "Not Found" page for dead links.
+101. Global 401 Experience: Provide a "Unauthorized" security screen for restricted areas.
+102. Responsive Adaptation: Ensure all low-level functions work on Mobile, Tablet, and Desktop.
+103. Real-Time UI Sync: Update interface components immediately upon backend state changes.
