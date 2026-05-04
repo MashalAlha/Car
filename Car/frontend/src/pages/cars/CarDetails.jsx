@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Calendar, Gauge, Settings, ShieldCheck, ChevronLeft, ChevronRight, Activity, Palette, AlertCircle, CreditCard, Lock, ArrowRight, ShoppingBag, CheckCircle, Clock } from 'lucide-react';
 import VirtualPaymentGateway from '../../components/ui/VirtualPaymentGateway';
+import ReviewSection from '../../components/ui/ReviewSection';
 
 import api from '../../utils/api';
 
@@ -446,6 +447,11 @@ export default function CarDetails() {
              )}
            </div>
          </div>
+       </div>
+
+       {/* Reviews Section */}
+       <div className="mt-16 border-t border-white/5 pt-8">
+         <ReviewSection itemId={id} itemType="car" />
        </div>
 
        {showPayment && (

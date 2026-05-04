@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { ChevronLeft, ShoppingBag, ShieldCheck, Wrench, Package, ArrowRight, Heart, Share2, Lock, AlertCircle, CheckCircle, FileText, Check } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useCart } from '../../contexts/CartContext';
+import ReviewSection from '../../components/ui/ReviewSection';
 
 import api from '../../utils/api';
 
@@ -255,6 +256,11 @@ export default function PartDetails() {
               </div>
             </div>
           </div>
+        </div>
+
+        {/* Reviews Section */}
+        <div className="mt-16 border-t border-white/5 pt-8">
+          <ReviewSection itemId={id} itemType="part" />
         </div>
       </div>
     </div>

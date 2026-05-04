@@ -1102,5 +1102,20 @@
       "description": "It seems you've taken a wrong turn on the road to excellence. This page has either been relocated or never existed in our elite collection.",
       "cta": "Return to Showroom"
     }
+  },
+  "reviews": {
+    "title": "Client Testimonials",
+    "leave_review": "Leave a Review",
+    "login_required": "Please login to share your experience and leave a review.",
+    "success_title": "Successfully Submitted",
+    "success_desc": "Thank you for sharing your experience.",
+    "submit_another": "Submit another review",
+    "rating_label": "Your Rating",
+    "feedback_label": "Feedback",
+    "feedback_placeholder": "Share details of your experience...",
+    "submit_btn": "Submit Review",
+    "loading": "Loading reviews...",
+    "no_reviews": "No reviews yet. Be the first to share your experience!",
+    "error_submit": "Failed to submit your review. Please try again."
   }
 }
