@@ -13,13 +13,16 @@ User = get_user_model()
 
 def create_user(username, email, password, role, phone):
     if not User.objects.filter(email=email).exists():
+        is_admin = (role == 'Admin')
         user = User.objects.create_user(
             username=username,
             email=email,
             password=password,
             role=role,
             phone=phone,
-            is_verified=True
+            is_verified=True,
+            is_staff=is_admin,
+            is_superuser=is_admin
         )
         print(f"Created {role}: {email}")
     else:
